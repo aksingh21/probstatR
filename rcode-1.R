@@ -42,3 +42,7 @@ SIMcraps <- function(n.games = 10000){
   par(opar)
   options(scipen = 0)
 }
+
+#running the funtion
+set.seed(1234)
+SIMcraps(n.games =50000)
