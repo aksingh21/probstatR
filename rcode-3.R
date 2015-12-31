@@ -28,3 +28,20 @@ axis(2, at = c(1/8, 4/8, 7/8, 1), labels = c("1/8", "4/8", "7/8", "1"), las = 1)
 segments(1,1/8,1,4/8, lty = 2)
 text(2.6, 2.5/8, "P(X=1) = F(1) - F(0)")
 par(opar)
+
+
+#Example 3.18
+#R code 3.8
+x <- c(1, 5, 30)
+px <- c(0.5, 0.45, 0.05)
+EX <- sum(x * px)
+WM <- weighted.mean(x, px)
+c(EX, WM)
+
+#Example 3.19
+#R code 3.9
+x <- c(1, 5, 30)
+px <- c(0.5, 0.45, 0.05)
+EX <- sum((x-5)*px)
+WM <- weighted.mean(x-5, px)
+c(EX, WM)
