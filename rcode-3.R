@@ -45,3 +45,40 @@ px <- c(0.5, 0.45, 0.05)
 EX <- sum((x-5)*px)
 WM <- weighted.mean(x-5, px)
 c(EX, WM)
+
+
+#Example 3.21
+#R code 3.10
+opar <- par(no.readonly = TRUE) #read current parameters
+par(mfrow = c(1,2))  # split device 1 row, 2 columns
+f <- function(x){
+  y <- 3/4 * (1-x^2)
+  y[x < -1 | x >1] <- 0
+  return (y)
+}
+curve(f, -2, 2, xlab = "x", ylab = "f(x)", main= "PDF of X")
+F <- function(x){
+  y <- -x^3/4 + 3* x/4 + 1/2
+  y[x<= -1] <- 0
+  y[x > 1] <-1
+  return (y)
+}
+
+curve(F,-2,2,xlab ="x", ylab = "F(x)", main = "CDF for X")
+par(opar)
+
+#R code 3.11
+library(ggplot2)
+p <- ggplot(data.frame (x = c(-2,2)), aes(x =x))
+p + stat_function(fun = f) + labs(x = "x", y = "f(x)", title = "PDF of X")
+p + stat_function(fun = F) + labs(x="x", y= "f(x)", title = "CDF of X")
+
+#R code 3.12
+fx <- function(x){
+  3/4 -3/4*x^2
+} #define function of x
+integrate(fx, lower = -0.5, upper = 1) # gives value and tolerance
+ans <- integrate(fx, lower = -0.5, upper = 1)$value
+ans
+library(MASS) # for fraction
+fractions(ans)
