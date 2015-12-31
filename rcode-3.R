@@ -14,7 +14,7 @@ opar <- par(no.readonly = TRUE)
 library(MASS) #used for fraction function
 par(mfrow=c(1,2), pty = "s")
 Omega <- expand.grid(coin1 = 0:1, coin2=0:1, coin3=0:1)
-n.heads <- apply(Omega, 1, sum)
+n.heads <- apply(Omega, 1, sum) 
 cbind(Omega, n.heads)
 
 T1 <- table(n.heads)/length(n.heads)
