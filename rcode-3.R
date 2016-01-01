@@ -82,3 +82,26 @@ ans <- integrate(fx, lower = -0.5, upper = 1)$value
 ans
 library(MASS) # for fraction
 fractions(ans)
+
+#Example 3.23
+#R code 3.13
+f <- function(x){ 2* cos(2*x) }
+curve(f, 0, pi/4, xlab ="x",ylab="2cos(2x)")
+abline(v=pi/12, lty=2 , lwd=2 )
+#ggplot2 now
+p <- ggplot(data.frame(x=c(0,pi/4)),aes(x=x))
+p+ stat_function(fun = f) + labs(x= "x", y = "2cos(2x)")+
+  geom_vline(xintercept = pi/12,lty = "dashed")
+
+#Example 3.24
+#R code 3.14
+x<- seq(-1, 1, length = 10)
+y<- dunif(x, -1, 1)
+DF<- data.frame(fx = y)
+previous_theme <- theme_set(theme_bw()) #set black and white theme
+ggplot(data = DF, aes(x = x, y = fx)) +
+  geom_area(fill = "skyblue3") +
+  labs(x = "x", y="f(x)\n") +
+  ylim (c(0,1)) +
+  theme_set(previous_theme)
+
